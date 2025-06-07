@@ -16,6 +16,7 @@
             <Button Text="Eliminar" x:Name="Eliminar" Clicked="Eliminar_Clicked"/>
             <Button Text="Camara" Clicked="Button_Clicked"/>
             <Button Text="Mostrar" x:Name="mostra" Clicked="mostra_Clicked"/>
+            <Button Text="Actualizar" x:Name="actualiza" Clicked="actualiza_Clicked"/>
 
             <ListView x:Name="estudiantesList"
                       SelectionMode="Single"
