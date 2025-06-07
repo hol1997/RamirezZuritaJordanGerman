@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RamirezZuritaJordanGerman.Views.PrincipalPage"
+             Title="Principal">
+
+    <ScrollView>
+        <VerticalStackLayout  Padding="20" Spacing="10" >
+            <Entry x:Name="nombreEntry" Placeholder="Nombre"/>
+            <Entry x:Name="apellidoEntry" Placeholder="Apellido"/>
+            <Entry x:Name="cursoEntry" Placeholder="Nota Final" />
+            <Entry x:Name="paraleloEntry" Placeholder="Paralelo"/>
+            <Entry x:Name="notaEntry" Placeholder="Curso" />
+
+            <Button Text="Guardar" x:Name="Guardar" Clicked="Guardar_Clicked"/>
+            <Button Text="Eliminar" x:Name="Eliminar" Clicked="Eliminar_Clicked"/>
+            <Button Text="Camara" Clicked="Button_Clicked"/>
+
+            <ListView x:Name="estudiantesList"
+                      SelectionMode="Single"
+                      ItemSelected="OnSeleccionado"
+                      HeightRequest="300">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Nombre}" Detail="{Binding Curso}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
