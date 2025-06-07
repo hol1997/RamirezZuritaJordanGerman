@@ -112,4 +112,41 @@ public partial class PrincipalPage : ContentPage
 
     await DisplayAlert("Estudiantes Registrados", mensaje, "OK");
 }
+  private async void actualiza_Clicked(object sender, EventArgs e)
+  {
+      if (estudianteSeleccionado == null)
+      {
+          await DisplayAlert("Error", "Seleccione un estudiante de la lista para actualizar.", "OK");
+          return;
+      }
+
+      if (string.IsNullOrWhiteSpace(nombreEntry.Text) ||
+          string.IsNullOrWhiteSpace(apellidoEntry.Text) ||
+          string.IsNullOrWhiteSpace(cursoEntry.Text) ||
+          string.IsNullOrWhiteSpace(paraleloEntry.Text) ||
+          string.IsNullOrWhiteSpace(notaEntry.Text))
+      {
+          await DisplayAlert("Error", "Todos los campos son obligatorios.", "OK");
+          return;
+      }
+
+      if (!float.TryParse(notaEntry.Text, out float nota))
+      {
+          await DisplayAlert("Error", "La nota debe ser un número válido.", "OK");
+          return;
+      }
+
+      estudianteSeleccionado.Nombre = nombreEntry.Text;
+      estudianteSeleccionado.Apellido = apellidoEntry.Text;
+      estudianteSeleccionado.Curso = cursoEntry.Text;
+      estudianteSeleccionado.Paralelo = paraleloEntry.Text;
+      estudianteSeleccionado.NOTA_FINAL = nota;
+
+      await App.Database.GuardarEstudianteAsync(estudianteSeleccionado);
+
+      await DisplayAlert("Actualizado", "Estudiante actualizado correctamente", "OK");
+
+      estudianteSeleccionado = null;
+      CargarEstudiantes();
+  }
 }
