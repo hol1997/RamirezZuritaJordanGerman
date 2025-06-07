@@ -27,7 +27,7 @@ public partial class PrincipalPage : ContentPage
         float nota;
         if (!float.TryParse(notaEntry.Text, out nota))
         {
-            await DisplayAlert("Error", "Nota inválida", "OK");
+            await DisplayAlert("Error", "Nota invÃ¡lida", "OK");
             return;
         }
 
@@ -40,7 +40,7 @@ public partial class PrincipalPage : ContentPage
         estudiante.NOTA_FINAL = nota;
 
         await App.Database.GuardarEstudianteAsync(estudiante);
-        await DisplayAlert("Éxito", "Guardado correctamente", "OK");
+        await DisplayAlert("Ã‰xito", "Guardado correctamente", "OK");
 
         estudianteSeleccionado = null;
         CargarEstudiantes();
@@ -54,7 +54,7 @@ public partial class PrincipalPage : ContentPage
             return;
         }
 
-        bool confirm = await DisplayAlert("Confirmar", "¿Eliminar estudiante?", "Sí", "No");
+        bool confirm = await DisplayAlert("Confirmar", "Â¿Eliminar estudiante?", "SÃ­", "No");
         if (confirm)
         {
             await App.Database.EliminarEstudianteAsync(estudianteSeleccionado);
@@ -90,4 +90,26 @@ public partial class PrincipalPage : ContentPage
     {
         await Navigation.PushAsync(new CamaraPage());
     }
+    private async void mostra_Clicked(object sender, EventArgs e)
+{
+    var lista = await App.Database.ObtenerEstudiantesAsync();
+
+    if (lista == null || lista.Count == 0)
+    {
+        await DisplayAlert("InformaciÃ³n", "No hay estudiantes registrados.", "OK");
+        return;
+    }
+
+    string mensaje = "";
+
+    foreach (var est in lista)
+    {
+        mensaje += $"Nombre: {est.Nombre} {est.Apellido}\n";
+        mensaje += $"Curso: {est.Curso} - Paralelo: {est.Paralelo}\n";
+        mensaje += $"Nota: {est.NOTA_FINAL}\n";
+        mensaje += "---------------------------\n";
+    }
+
+    await DisplayAlert("Estudiantes Registrados", mensaje, "OK");
+}
 }
