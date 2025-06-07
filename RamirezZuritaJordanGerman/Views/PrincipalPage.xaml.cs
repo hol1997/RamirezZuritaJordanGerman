@@ -106,7 +106,7 @@ public partial class PrincipalPage : ContentPage
     {
         mensaje += $"Nombre: {est.Nombre} {est.Apellido}\n";
         mensaje += $"Curso: {est.NOTA_FINAL} - Paralelo: {est.Paralelo}\n";
-        mensaje += $"Nota: {est.CursoL}\n";
+        mensaje += $"Nota: {est.Curso}\n";
         mensaje += "---------------------------\n";
     }
 
