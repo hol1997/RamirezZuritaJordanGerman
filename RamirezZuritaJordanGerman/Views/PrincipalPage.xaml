@@ -15,6 +15,7 @@
             <Button Text="Guardar" x:Name="Guardar" Clicked="Guardar_Clicked"/>
             <Button Text="Eliminar" x:Name="Eliminar" Clicked="Eliminar_Clicked"/>
             <Button Text="Camara" Clicked="Button_Clicked"/>
+            <Button Text="Mostrar" x:Name="mostra" Clicked="mostra_Clicked"/>
 
             <ListView x:Name="estudiantesList"
                       SelectionMode="Single"
