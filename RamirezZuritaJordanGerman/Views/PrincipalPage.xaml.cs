@@ -105,8 +105,8 @@ public partial class PrincipalPage : ContentPage
     foreach (var est in lista)
     {
         mensaje += $"Nombre: {est.Nombre} {est.Apellido}\n";
-        mensaje += $"Curso: {est.Curso} - Paralelo: {est.Paralelo}\n";
-        mensaje += $"Nota: {est.NOTA_FINAL}\n";
+        mensaje += $"Curso: {est.NOTA_FINAL} - Paralelo: {est.Paralelo}\n";
+        mensaje += $"Nota: {est.CursoL}\n";
         mensaje += "---------------------------\n";
     }
 
